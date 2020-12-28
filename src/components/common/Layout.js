@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getCurrentUser, logout } from "../../services/auth.service";
+import '../../css/Layout.css'
 const Layout = (props) => {
   const [showAdminBoard, setShowAdminBoard] = useState(false);
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -47,15 +48,22 @@ const Layout = (props) => {
         {currentUser ? (
           <div className="navbar-nav ml-auto">
             <li className="nav-item">
-              <Link to={"/profile"} className="nav-link">
+              <div className="nav-link dropdown">
                 {currentUser.username}
-              </Link>
+                <div class="dropdown-content">
+                  <Link to={"/profile"}>
+                    Profile
+                  </Link>
+                  <Link to={"/products"}>
+                    Products
+                  </Link>
+                  <a href="/login" onClick={logOut}>
+                    Logout
+                  </a>
+                </div>
+              </div>
             </li>
-            <li className="nav-item">
-                <a href="/login" className="nav-link" onClick={logOut}>
-                  Logout
-                </a>
-              </li>
+
           </div>
         ) : (
           <div className="navbar-nav ml-auto">
