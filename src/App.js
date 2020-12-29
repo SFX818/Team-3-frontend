@@ -10,6 +10,7 @@ import Profile from './components/Profile'
 import Product from './components/Product'
 import Purchase from './components/Purchase'
 import Sell from './components/Sell'
+import Settings from './components/Settings'
 
 
 // CSS imports
@@ -26,6 +27,7 @@ const App = () => {
        <Route exact path="/product" component={Product}/>
        <Route exact path="/sell" component={Sell}/>
        <Route exact path="/purchase" component={Purchase}/>
+       <Route exact path="/settings" component={Settings}/>
      </Switch>
     </Layout>
   );

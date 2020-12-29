@@ -60,6 +60,9 @@ const Layout = (props) => {
                   <Link to={"/sell"}>
                     Sell
                   </Link>
+                  <Link to={"/settings"}>
+                    Settings
+                  </Link>
                   <a href="/login" onClick={logOut}>
                     Logout
                   </a>
