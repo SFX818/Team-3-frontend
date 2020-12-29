@@ -50,12 +50,15 @@ const Layout = (props) => {
             <li className="nav-item">
               <div className="nav-link dropdown">
                 {currentUser.username}
-                <div class="dropdown-content">
+                <div className="dropdown-content">
                   <Link to={"/profile"}>
                     Profile
                   </Link>
-                  <Link to={"/products"}>
+                  <Link to={"/product"}>
                     Products
+                  </Link>
+                  <Link to={"/sell"}>
+                    Sell
                   </Link>
                   <a href="/login" onClick={logOut}>
                     Logout

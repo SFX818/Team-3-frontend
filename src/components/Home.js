@@ -1,6 +1,9 @@
 //CSS import
+import Product from './Product'
 const Home = () => {
-  return <div>Functional Component</div>;
+  return (
+    <div> heelo</div>
+  );
 };
 
 export default Home;

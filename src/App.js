@@ -9,6 +9,7 @@ import Signup from './components/Signup'
 import Profile from './components/Profile'
 import Product from './components/Product'
 import Purchase from './components/Purchase'
+import Sell from './components/Sell'
 
 
 // CSS imports
@@ -23,6 +24,7 @@ const App = () => {
        <Route exact path="/register" component={Signup}/>
        <Route exact path="/profile" component={Profile}/>
        <Route exact path="/product" component={Product}/>
+       <Route exact path="/sell" component={Sell}/>
        <Route exact path="/purchase" component={Purchase}/>
      </Switch>
     </Layout>
