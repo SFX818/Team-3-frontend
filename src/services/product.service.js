@@ -12,8 +12,12 @@ export const getProducts = () => {
         })
 }
 
-export const sellProduct = () => {
-    axios
-        .post(API_URL)
+export const sellProduct = (name, price, description, username) => {
+    return axios.post(API_URL, {
+        name,
+        price,
+        description,
+        username
+    })
         
 }
