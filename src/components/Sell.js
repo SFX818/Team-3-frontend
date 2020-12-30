@@ -26,13 +26,14 @@ const Sell = (props) => {
   const [message, setMessage] = useState("");
   const [data, setData] = useState({name:"", price: 0, description: "", currentUser: ""})
 
-  data.currentUser = getCurrentUser()
+  data.currentUser = getCurrentUser().username
   
   
   const handleChange = (e) => {
     setData({...data, [e.target.name]:e.target.value})
   };
   const createProduct = (e) => {
+    console.log(data.currentUser)
     e.preventDefault();
     //Prevent message clear them out
     setMessage("")
