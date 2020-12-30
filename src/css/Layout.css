@@ -21,6 +21,7 @@
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    top: -65px; /* allows for dropdown menu to be under navbar */
   }
   
   /* Links inside the dropdown */
@@ -39,3 +40,35 @@
   
   /* Change the background color of the dropdown button when the dropdown content is shown */
   .dropdown:hover .dropbtn {background-color: #3e8e41;}
+  
+  .dropdown-content a:link {
+    text-decoration: none;
+  }
+  
+  .nav-wrapper a:link {
+    text-decoration: none;
+  }
+
+  .dropdown-content a:visited {
+    text-decoration: none;
+  }
+
+  .nav-wrapper a:visited {
+    text-decoration: none;
+  }
+  
+  .dropdown-content a:hover {
+    text-decoration: none;
+  }
+
+  .nav-wrapper a:hover {
+    text-decoration: none;
+  }
+  
+  .dropdown-content a:active {
+    text-decoration: none;
+  }
+
+  .nav-wrapper a:active {
+    text-decoration: none;
+  }

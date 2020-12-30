@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from "react";
+import M from "materialize-css/dist/js/materialize.min.js";
 import { Link } from "react-router-dom";
 import { getCurrentUser, logout } from "../../services/auth.service";
 import '../../css/Layout.css'
 const Layout = (props) => {
+
   const [showAdminBoard, setShowAdminBoard] = useState(false);
   const [currentUser, setCurrentUser] = useState(undefined);
+
   useEffect(() => {
+    // allows for dropdown to work either when logged in or logged out (has to be in useEffect)
+    const dropdowns = document.querySelectorAll('.dropdown-trigger')
+    for (let i = 0; i < dropdowns.length; i++){
+      M.Dropdown.init(dropdowns[i])
+    }
     // grab getCurrentuser from the auth service
     const user = getCurrentUser();
     if (user) {
@@ -20,73 +28,50 @@ const Layout = (props) => {
   }
   return (
     <div>
-      <nav className="navbar navbar-expand navbar-dark bg-dark">
-        <Link to="/" className="navbar-brand">
-          Blue Barracudas Boutique
-        </Link>
-        <div className="navbar-nav mr-auto">
-          <li className="nav-item">
-            <Link to={"/home"} className="nav-link">
-              Home
-            </Link>
-          </li>
-          {showAdminBoard && (
-            <li className="nav-item">
-              <Link to={"/admin"} className="nav-link">
-                Admin Board
-              </Link>
-            </li>
-          )}
-          {currentUser && (
-            <li className="nav-item">
-              <Link to={"/user"} className="nav-link">
-                User
-              </Link>
-            </li>
-          )}
-        </div>
+      <nav>
         {currentUser ? (
-          <div className="navbar-nav ml-auto">
-            <li className="nav-item">
-              <div className="nav-link dropdown">
-                {currentUser.username}
-                <div className="dropdown-content">
-                  <Link to={"/profile"}>
-                    Profile
-                  </Link>
-                  <Link to={"/product"}>
-                    Products
-                  </Link>
-                  <Link to={"/sell"}>
-                    Sell
-                  </Link>
-                  <Link to={"/settings"}>
-                    Settings
-                  </Link>
-                  <a href="/login" onClick={logOut}>
-                    Logout
-                  </a>
-                </div>
+          <div>
+            <ul id="dropdown1" className="dropdown-content">
+              <li><a href="/profile">Profile</a></li>
+              <li><a href="/product">Products</a></li>
+              <li><a href="/sell">Sell</a></li>
+              <li><a href="/settings">Settings</a></li>
+              <li className="divider"></li>
+              <li><a href="/login" onClick={logOut}>Logout</a></li>
+            </ul>
+            <nav>
+              <div className="nav-wrapper cyan darken-3">
+                  <a href="/" class="brand-logo center">Blue Barracudas Boutique</a>
+                <ul className="right hide-on-med-and-down">
+                  <li><a href="/">Home</a></li>
+                  <li><a href="/user">User</a></li>
+                  
+                  <li><a className="dropdown-trigger" href="/profile" data-target="dropdown1">{currentUser.username}<i className="material-icons right">arrow_drop_down</i></a></li>
+                </ul>
               </div>
-            </li>
-
+            </nav>
           </div>
         ) : (
-          <div className="navbar-nav ml-auto">
-              <li className="nav-item">
-                  <Link to={"/login"} className="nav-link">
-                      Login
-                  </Link>
-              </li>
-            <li className="nav-item">
-                <Link to={'/register'} className="nav-link">
-                    Sign Up
-                </Link>
-            </li>
-          </div>
+          <div>
+            <ul id="dropdown2" className="dropdown-content">
+              <li><a href="/login">Login</a></li>
+              <li><a href="/register">Sign Up</a></li>
+            </ul>
+          <nav>
+            <div className="nav-wrapper cyan darken-3">
+              <a href="/" className="brand-logo center">Blue Barracudas Boutique</a>
+              <ul className="right hide-on-med-and-down">
+                <li><a href="/">Home</a></li>
+                <li><a href="/user">User</a></li>
+                
+                <li><a className="dropdown-trigger" href="/login" data-target="dropdown2">Get Started<i className="material-icons right">arrow_drop_down</i></a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
         )}
       </nav>
-      <div className="container mt-3">{props.children}</div>
+    <div className="container mt-3">{props.children}</div>
     </div>
   );
 };
