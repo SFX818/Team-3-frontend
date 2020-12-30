@@ -1,16 +1,15 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import {getProducts} from '../services/product.service'
 
-const Product = () => {
-    const products = getProducts()
+const Product = (props) => {
     return (
         <div className ="container">
             <div>Picture</div>
-            <div className="description">Description of Product: al;skdfhkajsdhflkasdjfgaklsdjf</div>
-            <div>Price</div>
+            <div>Name of Product: {props.name}</div>
+            <div className="description">Description: {props.description}</div>
+            <div>Price: {props.price}</div>
             <Link to={"/purchase"}>Buy Now</Link>
-            <div>Selling User</div>
+            <div>User Selling: {props.seller}</div>
         </div>
     )
 }
