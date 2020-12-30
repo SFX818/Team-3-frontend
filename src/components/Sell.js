@@ -6,6 +6,9 @@ import { sellProduct } from '../services/product.service'
 import {resMessage} from '../utilities/function.utilities'
 import FormGroup from './common/FormGroup'
 import BtnSpinner from './common/ButtonSpinner'
+import { getCurrentUser } from '../services/auth.service'
+
+
 // Function given to react-validator
 const required = (value) => {
   if (!value) {
@@ -21,7 +24,9 @@ const Sell = (props) => {
   const checkBtn = useRef();
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
-  const [data, setData] = useState({username:"", password: ""})
+  const [data, setData] = useState({name:"", price: 0, description: "", currentUser: ""})
+
+  data.currentUser = getCurrentUser()
   
   
   const handleChange = (e) => {
@@ -35,7 +40,7 @@ const Sell = (props) => {
     // Validates all the fields
     form.current.validateAll();
     if(checkBtn.current.context._errors.length === 0){
-        sellProduct(data.name, data.price, data.description).then(
+        sellProduct(data.name, data.price, data.description, data.currentUser).then(
             () => {
               props.history.push("/products");
               window.location.reload()
