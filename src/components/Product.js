@@ -11,7 +11,8 @@ const Product = (props) => {
             <Link to={"/purchase"}>Buy Now</Link>
             <div>User Selling: {props.seller}</div>
             <form class="delete-form">
-                <button type="submit" class='btn btn-danger' name="submit">Delete Product</button>
+                <button type="submit" className='btn btn-danger'>Delete Product</button>
+                <button type="button" className="btn btn-primary">Edit</button>
             </form>
         </div>
     )
