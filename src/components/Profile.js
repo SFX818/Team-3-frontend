@@ -9,6 +9,11 @@ const Profile = () => {
                     <strong> {currentUser.username}'s Profile </strong>
                 </h3>
             </header>
+
+            <div>
+                <strong>About:</strong> {currentUser.about}
+            </div>
+
         </div>
     )
 }
