@@ -96,6 +96,15 @@ const Sell = (props) => {
               validations={[required]}
             />
           </FormGroup>
+          
+        {/* <div>
+           <form encType="multipart/form-data" action="/" method="POST">
+            <input type="file" name="myFile" />
+            <input type="submit" className="btn btn-primary" />
+          </form>
+           <img src="<%= image %>" alt="A picture" /> 
+        </div>  */}
+
             <BtnSpinner loading={loading} text={"Post Product"}/>
           {message && (
             <div className="form-group">
