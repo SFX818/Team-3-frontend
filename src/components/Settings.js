@@ -65,6 +65,21 @@ const Profile = () => {
                 </div>
                 <button type="submit" className="btn btn-primary mb-2">Submit</button>
             </form>
+
+            <hr></hr>
+            <h2 className="text-primary">
+                Update Your Profile Description
+            </h2>
+            <p>
+                <strong> Current About Me: </strong> {currentUser.about} 
+            </p>
+            <form className="form" role="form">
+                <div className="form-group mx-sm-3 mb-2 myForm">
+                    <label for="inputAbout" className="sr-only">About</label>
+                    <input type="text" className="form-control" id="inputAbout" placeholder="About"></input>
+                </div>
+                <button type="submit" className="btn btn-primary mb-2">Submit</button>
+            </form>
             
             <hr></hr>
             <h2 className="text-danger">
