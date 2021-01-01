@@ -13,6 +13,16 @@ const Product = (props) => {
             }
         )
     }
+
+    const handleEdit = (e) =>{
+    //     e.preventDefault()
+    //     editProduct(props.id, props.name, props.description, props.price)
+    //     .then(
+    //         ()=>{
+    //             window.location.reload()
+    //         }
+    //     )
+    }
     
     return (
         <div className ="container">
@@ -24,7 +34,7 @@ const Product = (props) => {
             <div>User Selling: {props.seller}</div>
             <form class="delete-form">
                 <button type="button" onClick={handleDelete} className='btn btn-danger'>Delete</button>
-                <button type="button" className="btn btn-primary">Edit</button>
+                <button type="button" className="btn btn-link"><Link to={{pathname: '/edit', state: {name: props.name, description: props.description, price: props.price, id: props.id}}}>Edit</Link></button>
             </form>
         </div>
     )
