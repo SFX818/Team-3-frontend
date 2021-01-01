@@ -30,3 +30,12 @@ export const deleteProduct = (id) =>{
         id
     })
 }
+export const editProduct = (id, name, price, description) =>{
+    console.log(id)
+    return axios.put(API_URL + id, {
+        id,
+        name,
+        description,
+        price
+    })
+}
