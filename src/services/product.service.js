@@ -25,6 +25,7 @@ export const sellProduct = (name, price, description, username) => {
 }
 
 export const deleteProduct = (id) =>{
+    console.log(id)
     return axios.delete(API_URL + id, {
         id
     })
