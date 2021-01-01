@@ -33,7 +33,6 @@ const Sell = (props) => {
     setData({...data, [e.target.name]:e.target.value})
   };
   const createProduct = (e) => {
-    console.log(data.currentUser)
     e.preventDefault();
     //Prevent message clear them out
     setMessage("")

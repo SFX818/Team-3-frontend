@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-const API_URL = 'http://localhost:8080/api/products'
+const API_URL = 'http://localhost:8080/api/products/'
 
 export const getProducts = () => {
     let products = []
@@ -22,5 +22,10 @@ export const sellProduct = (name, price, description, username) => {
         description,
         username
     })
-        
+}
+
+export const deleteProduct = (id) =>{
+    return axios.delete(API_URL + id, {
+        id
+    })
 }

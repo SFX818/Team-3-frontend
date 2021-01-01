@@ -16,7 +16,7 @@ const Home = () => {
 
   return (
     <>
-    {products.map(each => <Product name={each.name} price={each.price} description={each.description} seller={each.userSelling}/>)}
+    {products.map(each => <Product name={each.name} price={each.price} description={each.description} seller={each.userSelling} id={each._id}/>)}
     </>
   );
 };
