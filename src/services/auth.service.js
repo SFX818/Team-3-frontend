@@ -36,6 +36,39 @@ export const logout = () => {
     removeItem('user')
 }
 
+export const deleteAccount = (username) => {
+    return axios
+    .delete(API_URL + 'delete', {
+        username
+    }).then((response) => {
+        removeItem('user')
+    })
+}
+
+export const changeEmail = (username,email) => {
+    return axios.put(API_URL + 'editEmail' , {
+        username,
+        email
+    })
+}
+
+export const changeUsername = (username, newUserName) => {
+    return axios.put(API_URL + 'editUsername' , {
+        username,
+        newUsername
+    })
+}
+
+export const changePassword = (username, password, newPassword, newPasswordAgain) => {
+    return axios.put(API_URL + 'editPassword' , {
+        username,
+        password,
+        newPassword,
+        newPasswordAgain
+    })
+}
+
+
 //get the current user 
 export const getCurrentUser = () => {
     //call getItem function and pass in user
