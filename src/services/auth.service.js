@@ -52,12 +52,12 @@ export const changeEmail = (username,email) => {
     })
 }
 
-export const changeUsername = (username, newUserName) => {
-    return axios.put(API_URL + 'editUsername' , {
-        username,
-        newUsername
-    })
-}
+// export const changeUsername = (username, newUsername) => {
+//     return axios.put(API_URL + 'editUsername' , {
+//         username,
+//         newUsername
+//     })
+// }
 
 export const changePassword = (username, password, newPassword, newPasswordAgain) => {
     return axios.put(API_URL + 'editPassword' , {

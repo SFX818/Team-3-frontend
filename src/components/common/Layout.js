@@ -41,10 +41,11 @@ const Layout = (props) => {
             </ul>
             <nav>
               <div className="nav-wrapper cyan darken-3">
-                  <a href="/" class="brand-logo center">Blue Barracudas Boutique</a>
+                  <a href="/" className="brand-logo center">Blue Barracudas Boutique</a>
                 <ul className="right hide-on-med-and-down">
                   <li><a href="/">Home</a></li>
-                  <li><a href="/user">User</a></li>
+                  {/* commenting out user for now as it was messing up materialize dropdown navbar - if we need the /user route, we can add it under the dropdown options */}
+                  {/* <li><a href="/user">User</a></li> */}
                   
                   <li><a className="dropdown-trigger" href="/profile" data-target="dropdown1">{currentUser.username}<i className="material-icons right">arrow_drop_down</i></a></li>
                 </ul>
@@ -62,7 +63,7 @@ const Layout = (props) => {
               <a href="/" className="brand-logo center">Blue Barracudas Boutique</a>
               <ul className="right hide-on-med-and-down">
                 <li><a href="/">Home</a></li>
-                <li><a href="/user">User</a></li>
+                {/* <li><a href="/user">User</a></li> */}
                 
                 <li><a className="dropdown-trigger" href="/login" data-target="dropdown2">Get Started<i className="material-icons right">arrow_drop_down</i></a></li>
               </ul>

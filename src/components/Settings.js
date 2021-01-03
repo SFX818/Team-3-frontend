@@ -6,7 +6,7 @@ const Profile = () => {
     const currentUser = getCurrentUser()
     return (
         <div className ="container">
-            <header classname="jumbotron"> 
+            <header className="jumbotron"> 
                 <h3> 
                     <strong> {currentUser.username}'s Settings </strong>
                 </h3>
