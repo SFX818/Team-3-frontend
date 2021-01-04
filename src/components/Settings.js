@@ -3,7 +3,7 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import FormGroup from './common/FormGroup'
-import { getCurrentUser, deleteAccount, changeUsername, logout } from '../services/auth.service'
+import { getCurrentUser, deleteAccount, changeUsername, changeEmail, changePassword, logout } from '../services/auth.service'
 
 import '../css/components/Settings.css'
 
@@ -35,6 +35,18 @@ const Profile = (props) => {
         e.preventDefault()
         changeUsername(data.newUsername)
     }
+
+    const handleChangeEmail = (e) => {
+        e.preventDefault()
+        changeEmail(data.newEmail)
+    }
+
+    const handleChangePassword = (e) => {
+        // e.preventDefault()
+        changePassword(data.currentPassword, data.newPassword, data.newPasswordAgain)
+    }
+    
+    
     
     return (
         <div className ="container">
@@ -75,13 +87,20 @@ const Profile = (props) => {
             <p>
                 <strong> Current Email: </strong> {currentUser.email} 
             </p>
-            <form className="form" role="form">
-                <div className="form-group mx-sm-3 mb-2">
-                    <label for="inputEmail" className="sr-only">Email</label>
-                    <input type="email" className="form-control" id="inputEmail" placeholder="Email"></input>
-                </div>
-                <button type="submit" className="btn btn-primary mb-2">Submit</button>
-            </form>
+            <Form onSubmit={(e) => {handleChangeEmail(e)}} ref={form}>
+                <FormGroup text=''>
+                    <Input
+                    type="text"
+                    className="form-control"
+                    name="newEmail"
+                    value={data.newEmail}
+                    onChange={handleChange}
+                    validations={[required]}
+                    placeholder="New Email"
+                    />
+                </FormGroup>
+                <CheckButton className="btn btn-secondary" ref={checkBtn}>Submit</CheckButton>
+            </Form>
             <hr></hr>
             <h2 className="text-primary">
                 Change Password
@@ -89,22 +108,42 @@ const Profile = (props) => {
             <p>
                 <strong>It's a good idea to use a strong password that you're not using elsewhere</strong>
             </p>
-            <form className="form" role="form">
-                <div className="form-group mx-sm-3 mb-2">
-                    <label for="currentPassword" className="sr-only">Current Password</label>
-                    <input type="password" className="form-control" id="currentPassword" placeholder="Current Password"></input>
-                </div>
-                <div className="form-group mx-sm-3 mb-2">
-                    <label for="newPassword" className="sr-only">New Password</label>
-                    <input type="password" className="form-control" id="newPassword" placeholder="New Password"></input>
-                </div>
-                <div className="form-group mx-sm-3 mb-2">
-                    <label for="reenterPassword" className="sr-only">Re-enter Password</label>
-                    <input type="password" className="form-control" id="reenterPassword" placeholder="Re-enter Password"></input>
-                </div>
-                <button type="submit" className="btn btn-primary mb-2">Submit</button>
-            </form>
-
+            <Form onSubmit={(e) => {handleChangePassword(e)}} ref={form}>
+                <FormGroup text=''>
+                    <Input
+                    type="password"
+                    className="form-control"
+                    name="currentPassword"
+                    value={data.currentPassword}
+                    onChange={handleChange}
+                    validations={[required]}
+                    placeholder="Current Password"
+                    />
+                </FormGroup>
+                <FormGroup text=''>
+                    <Input
+                    type="password"
+                    className="form-control"
+                    name="newPassword"
+                    value={data.newPassword}
+                    onChange={handleChange}
+                    validations={[required]}
+                    placeholder="New Password"
+                    />
+                </FormGroup>
+                <FormGroup text=''>
+                    <Input
+                    type="password"
+                    className="form-control"
+                    name="newPasswordAgain"
+                    value={data.newPasswordAgain}
+                    onChange={handleChange}
+                    validations={[required]}
+                    placeholder="Re-enter New Password"
+                    />
+                </FormGroup>
+                <CheckButton className="btn btn-secondary" ref={checkBtn}>Submit</CheckButton>
+            </Form>
             <hr></hr>
             <h2 className="text-primary">
                 Update Your Profile Description

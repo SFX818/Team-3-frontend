@@ -76,8 +76,9 @@ export const changeUsername = (newUsername) => {
     })
 }
 
-export const changePassword = (username, password, newPassword, newPasswordAgain) => {
-    return axios.put(API_URL + 'editPassword' , {
+export const changePassword = (password, newPassword, newPasswordAgain) => {
+    let username = getCurrentUser().username
+    return axios.put(API_URL + 'editPassword/'+username , {
         username,
         password,
         newPassword,
