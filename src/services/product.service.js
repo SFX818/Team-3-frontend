@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 const API_URL = 'http://localhost:8080/api/products/'
 
 export const getProducts = () => {
@@ -15,12 +14,14 @@ export const getProducts = () => {
     return products
 }
 
-export const sellProduct = (name, price, description, username) => {
+export const sellProduct = (name, price, description, username, image) => {
+    console.log(image)
     return axios.post(API_URL, {
         name,
         price,
         description,
-        username
+        username,
+        image
     })
 }
 

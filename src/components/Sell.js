@@ -24,7 +24,7 @@ const Sell = (props) => {
   const checkBtn = useRef();
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
-  const [data, setData] = useState({name:"", price: 0, description: "", currentUser: ""})
+  const [data, setData] = useState({name:"", price: 0, description: "", currentUser: "", image: ""})
 
   data.currentUser = getCurrentUser().username
   
@@ -32,6 +32,10 @@ const Sell = (props) => {
   const handleChange = (e) => {
     setData({...data, [e.target.name]:e.target.value})
   };
+
+  const handleFileChange = (e) => {
+      setData({...data, image: e.target.files[0]})
+  }
   const createProduct = (e) => {
     e.preventDefault();
     //Prevent message clear them out
@@ -40,7 +44,7 @@ const Sell = (props) => {
     // Validates all the fields
     form.current.validateAll();
     if(checkBtn.current.context._errors.length === 0){
-        sellProduct(data.name, data.price, data.description, data.currentUser).then(
+        sellProduct(data.name, data.price, data.description, data.currentUser, data.image).then(
             () => {
               props.history.push("/products");
               window.location.reload()
@@ -101,9 +105,7 @@ const Sell = (props) => {
               type="file"
               className="form-control"
               name="image"
-              // value={data.description}
-              // onChange={handleChange}
-              // validations={[required]}
+              onChange={handleFileChange}
             />
           </FormGroup>
           
