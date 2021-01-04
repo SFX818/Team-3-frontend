@@ -1,9 +1,41 @@
-import React from 'react'
-import { getCurrentUser } from '../services/auth.service'
+import React, { useState, useRef } from "react";
+import Form from "react-validation/build/form";
+import Input from "react-validation/build/input";
+import CheckButton from "react-validation/build/button";
+import FormGroup from './common/FormGroup'
+import { getCurrentUser, deleteAccount, changeUsername, logout } from '../services/auth.service'
 
 import '../css/components/Settings.css'
-const Profile = () => {
+
+const required = (value) => {
+    if (!value) {
+      return (
+        <div className="alert alert-danger" role="alert">
+          This field is required!
+        </div>
+      );
+    }
+  };
+
+
+const Profile = (props) => {
     const currentUser = getCurrentUser()
+    const form = useRef();
+    const checkBtn = useRef();
+
+    const [data, setData] = useState({newUsername:"", newEmail:"",currentPassword: "", newPassword:"", newPasswordAgain:""})
+
+
+    const handleChange = (e) => {
+        setData({...data, [e.target.name]:e.target.value})
+        console.log(e.target.value)
+    };
+
+    const handleChangeUsername = (e) => {
+        e.preventDefault()
+        changeUsername(data.newUsername)
+    }
+    
     return (
         <div className ="container">
             <header className="jumbotron"> 
@@ -22,13 +54,20 @@ const Profile = () => {
             <p>
                 <strong> Current Username: </strong> {currentUser.username} 
             </p>
-            <form className="form" role="form">
-                <div className="form-group mx-sm-3 mb-2 myForm">
-                    <label for="inputUsername" className="sr-only">Username</label>
-                    <input type="text" className="form-control" id="inputUsername" placeholder="Username"></input>
-                </div>
-                <button type="submit" className="btn btn-primary mb-2">Submit</button>
-            </form>
+            <Form onSubmit={(e) => {handleChangeUsername(e)}} ref={form}>
+                <FormGroup text=''>
+                    <Input
+                    type="text"
+                    className="form-control"
+                    name="newUsername"
+                    value={data.newUsername}
+                    onChange={handleChange}
+                    validations={[required]}
+                    placeholder="Username"
+                    />
+                </FormGroup>
+                <CheckButton className="btn btn-secondary" ref={checkBtn}>Submit</CheckButton>
+            </Form>
             <hr></hr>
             <h2 className="text-primary">
                 Change Email
@@ -86,7 +125,20 @@ const Profile = () => {
                 Delete account
             </h2>
             <p>Once you delete your account, there is no going back. Please be certain.</p>
-            <button type="button" className="btn btn-danger">Delete Account</button>
+            <Form onSubmit={(e) => {
+                deleteAccount()
+                logout()
+            }} ref={form}>
+                <FormGroup text=''>
+                    <Input
+                    type="hidden"
+                    className="form-control"
+                    name="username"
+                    value={currentUser.username}
+                    />
+                </FormGroup>
+                <CheckButton className="btn btn-danger" ref={checkBtn}>Delete Account</CheckButton>
+            </Form>
         </div>
     )
 }

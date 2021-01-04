@@ -30,34 +30,51 @@ export const login = (username, password) => {
     })
 }
 
+//get the current user 
+export const getCurrentUser = () => {
+    //call getItem function and pass in user
+    return getItem('user');
+}
+
 //function to logout user
 export const logout = () => {
     //call removeItem function and pass in user
     removeItem('user')
 }
 
-export const deleteAccount = (username) => {
+export const deleteAccount = () => {
+    let username = getCurrentUser().username
+    console.log("here is the username: "+username)
     return axios
-    .delete(API_URL + 'delete', {
+    .delete(API_URL + 'delete/'+username, {
         username
     }).then((response) => {
-        removeItem('user')
+        logout()
+    }).catch( err => {
+        console.log("error at delete accout")
     })
 }
 
-export const changeEmail = (username,email) => {
-    return axios.put(API_URL + 'editEmail' , {
+export const changeEmail = (email) => {
+    let username = getCurrentUser().username
+    return axios.put(API_URL + 'editEmail/' + username , {
         username,
         email
     })
 }
 
-// export const changeUsername = (username, newUsername) => {
-//     return axios.put(API_URL + 'editUsername' , {
-//         username,
-//         newUsername
-//     })
-// }
+export const changeUsername = (newUsername) => {
+    let username = getCurrentUser().username
+    return axios.put(API_URL + 'editUsername/' + username , {
+        username,
+        newUsername
+    }).then((response) => {
+        console.log(response)
+    })
+    .catch((err)=> {
+        console.log(err)
+    })
+}
 
 export const changePassword = (username, password, newPassword, newPasswordAgain) => {
     return axios.put(API_URL + 'editPassword' , {
@@ -69,8 +86,3 @@ export const changePassword = (username, password, newPassword, newPasswordAgain
 }
 
 
-//get the current user 
-export const getCurrentUser = () => {
-    //call getItem function and pass in user
-    return getItem('user');
-}
