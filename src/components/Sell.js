@@ -95,6 +95,17 @@ const Sell = (props) => {
               validations={[required]}
             />
           </FormGroup>
+
+          <FormGroup text='image'>
+            <Input
+              type="file"
+              className="form-control"
+              name="image"
+              // value={data.description}
+              // onChange={handleChange}
+              // validations={[required]}
+            />
+          </FormGroup>
           
         {/* <div>
            <form encType="multipart/form-data" action="/" method="POST">
