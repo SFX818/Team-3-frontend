@@ -44,7 +44,7 @@ export const logout = () => {
 
 export const deleteAccount = () => {
     let username = getCurrentUser().username
-    console.log("here is the username: "+username)
+    // console.log("here is the username: "+username)
     return axios
     .delete(API_URL + 'delete/'+username, {
         username

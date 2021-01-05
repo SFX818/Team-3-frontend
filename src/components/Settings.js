@@ -17,6 +17,26 @@ const required = (value) => {
     }
   };
 
+  // Functions that validates username
+const vusername = (value) => {
+    if(value.length < 3 || value.length >= 20){
+        return (
+            <div className="alert alert-danger" role="alert">
+                The username must be between 3 and 20 charaters.
+            </div>
+        )
+    }
+  }
+  
+  // Functions that validates passwords
+  const vpassword = (value) => {
+    if(value.length < 6 || value.length >= 40){
+    return (<div className="alert alert-danger" role="alert">
+            The password must be between 6 and 40 characters.
+    </div> )
+    }
+  }
+
 
 const Profile = (props) => {
     const currentUser = getCurrentUser()
@@ -24,12 +44,12 @@ const Profile = (props) => {
     const checkBtn = useRef();
 
     const [data, setData] = useState({newUsername:"", newEmail:"",currentPassword: "", newPassword:"", newPasswordAgain:""})
-
-
+    
     const handleChange = (e) => {
         setData({...data, [e.target.name]:e.target.value})
         console.log(e.target.value)
     };
+
 
     const handleChangeUsername = (e) => {
         e.preventDefault()
@@ -74,11 +94,11 @@ const Profile = (props) => {
                     name="newUsername"
                     value={data.newUsername}
                     onChange={handleChange}
-                    validations={[required]}
+                    validations={[required, vusername]}
                     placeholder="Username"
                     />
                 </FormGroup>
-                <CheckButton className="btn btn-secondary" ref={checkBtn}>Submit</CheckButton>
+                <CheckButton className="btn btn-primary" ref={checkBtn}>Submit</CheckButton>
             </Form>
             <hr></hr>
             <h2 className="text-primary">
@@ -99,7 +119,7 @@ const Profile = (props) => {
                     placeholder="New Email"
                     />
                 </FormGroup>
-                <CheckButton className="btn btn-secondary" ref={checkBtn}>Submit</CheckButton>
+                <CheckButton className="btn btn-primary" ref={checkBtn}>Submit</CheckButton>
             </Form>
             <hr></hr>
             <h2 className="text-primary">
@@ -116,7 +136,7 @@ const Profile = (props) => {
                     name="currentPassword"
                     value={data.currentPassword}
                     onChange={handleChange}
-                    validations={[required]}
+                    validations={[required, vpassword]}
                     placeholder="Current Password"
                     />
                 </FormGroup>
@@ -127,7 +147,7 @@ const Profile = (props) => {
                     name="newPassword"
                     value={data.newPassword}
                     onChange={handleChange}
-                    validations={[required]}
+                    validations={[required, vpassword]}
                     placeholder="New Password"
                     />
                 </FormGroup>
@@ -138,11 +158,11 @@ const Profile = (props) => {
                     name="newPasswordAgain"
                     value={data.newPasswordAgain}
                     onChange={handleChange}
-                    validations={[required]}
+                    validations={[required, vpassword]}
                     placeholder="Re-enter New Password"
                     />
                 </FormGroup>
-                <CheckButton className="btn btn-secondary" ref={checkBtn}>Submit</CheckButton>
+                <CheckButton className="btn btn-primary" ref={checkBtn}>Submit</CheckButton>
             </Form>
             <hr></hr>
             <h2 className="text-primary">
