@@ -1,3 +1,4 @@
+import userEvent from '@testing-library/user-event';
 import axios from 'axios';
 import authHeader from '../utilites/authHeader.utilities';
 

@@ -3,6 +3,7 @@ import Product from './Product'
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import { getCurrentUser } from '../services/auth.service'
+
 const Profile = () => {
     
     const currentUser = getCurrentUser()
