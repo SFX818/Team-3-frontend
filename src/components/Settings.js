@@ -1,11 +1,12 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import FormGroup from './common/FormGroup'
-import { getCurrentUser, deleteAccount, changeUsername, changeEmail, changePassword, logout } from '../services/auth.service'
+import { getCurrentUser, deleteAccount, changeUsername, changeEmail, changePassword, logout , getProfile } from '../services/auth.service'
 
 import '../css/components/Settings.css'
+
 
 const required = (value) => {
     if (!value) {
@@ -42,13 +43,29 @@ const Profile = (props) => {
     const currentUser = getCurrentUser()
     const form = useRef();
     const checkBtn = useRef();
+    const profile = getProfile(getCurrentUser().username)
+    console.log(profile)
 
     const [data, setData] = useState({newUsername:"", newEmail:"",currentPassword: "", newPassword:"", newPasswordAgain:""})
-    
+    const [display, setDisplay] = useState({username:getCurrentUser().username, email:getCurrentUser().email})    
+
     const handleChange = (e) => {
         setData({...data, [e.target.name]:e.target.value})
-        console.log(e.target.value)
+        console.log("handle change name: " + e.target.name)
+        console.log("handle change: "+e.target.value)
     };
+
+    const handleDisplayChange = (e) => {
+        setDisplay({...display, [e.target.name]:e.target.value})
+    };
+
+    useEffect(() => {
+        console.log("use effect: display name " + display.username)
+        console.log("use effect: display name " + display.email)
+    }, [display])
+
+
+
 
 
     const handleChangeUsername = (e) => {
@@ -65,6 +82,8 @@ const Profile = (props) => {
         // e.preventDefault()
         changePassword(data.currentPassword, data.newPassword, data.newPasswordAgain)
     }
+
+
     
     
     
@@ -72,7 +91,7 @@ const Profile = (props) => {
         <div className ="container">
             <header className="jumbotron"> 
                 <h3> 
-                    <strong> {currentUser.username}'s Settings </strong>
+                    <strong> {display.username}'s Settings </strong>
                 </h3>
             </header>
             
@@ -84,9 +103,11 @@ const Profile = (props) => {
                 Change Username
             </h2>
             <p>
-                <strong> Current Username: </strong> {currentUser.username} 
+                <strong> Current Username: </strong> {display.username} 
             </p>
-            <Form onSubmit={(e) => {handleChangeUsername(e)}} ref={form}>
+            <Form id="username" onSubmit={(e) => {
+                handleChangeUsername(e)
+                handleDisplayChange(e)}} ref={form}>
                 <FormGroup text=''>
                     <Input
                     type="text"
@@ -105,9 +126,11 @@ const Profile = (props) => {
                 Change Email
             </h2>
             <p>
-                <strong> Current Email: </strong> {currentUser.email} 
+                <strong> Current Email: </strong> {display.email} 
             </p>
-            <Form onSubmit={(e) => {handleChangeEmail(e)}} ref={form}>
+            <Form id="email" onSubmit={(e) => {
+                handleChangeEmail(e)
+                handleDisplayChange(e)}} ref={form}>
                 <FormGroup text=''>
                     <Input
                     type="text"
