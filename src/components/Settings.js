@@ -1,14 +1,12 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import FormGroup from './common/FormGroup'
-import { getCurrentUser, deleteAccount, changeUsername, changeEmail, changePassword, logout } from '../services/auth.service'
-import axios from 'axios';
+import { getCurrentUser, deleteAccount, changeUsername, changeEmail, changePassword, changeAboutMe, logout } from '../services/auth.service'
 
 import '../css/components/Settings.css'
 
-const API_URL = 'http://localhost:8080/api/auth/';
 
 const required = (value) => {
     if (!value) {
@@ -39,28 +37,17 @@ const vusername = (value) => {
     </div> )
     }
   }
-
-  const getProfile = (username) => {
-    console.log("auth.service getprofile " + username)
-    return axios.get(API_URL+ 'profile/' +username , {
-        username
-    }).then(response => {
-         console.log(response)
-    }).catch(err => {
-        console.log(err)
-    })
-}
-
 const Profile = (props) => {
     const currentUser = getCurrentUser()
+    console.log(currentUser)
     const form = useRef();
     const checkBtn = useRef();
     
 
-    const [data, setData] = useState({newUsername:"", newEmail:"",currentPassword: "", newPassword:"", newPasswordAgain:""})
+    const [data, setData] = useState({newUsername:"", newEmail:"",currentPassword: "", newPassword:"", newPasswordAgain:"", newAbout:""})
+    // const [profile, setProfile] = useState("") 
     const [display, setDisplay] = useState({username:getCurrentUser().username, email:getCurrentUser().email})   
-    const [profile, setProfile] = useState("") 
-
+    
     const handleChange = (e) => {
         setData({...data, [e.target.name]:e.target.value})
         console.log("handle change name: " + e.target.name)
@@ -71,27 +58,45 @@ const Profile = (props) => {
         setDisplay({...display, [e.target.name]:e.target.value})
     };
 
-    useEffect(() => {
-        console.log("use effect: display name " + display.username)
-        console.log("use effect: display name " + display.email)
-        setProfile(getProfile(display.username))
-    }, [display])
+    // useEffect(() => {
+    //     setProfile(getProfile(display.username))
+    // }, [display])
 
 
-    console.log(profile)
+    // console.log(profile)
     const handleChangeUsername = (e) => {
         e.preventDefault()
         changeUsername(data.newUsername)
+        logout()
+        props.history.push("/login");
+        window.location.reload()
+        // display.username = data.newUsername
+        // getCurrentUser().username = data.newUsername
     }
 
     const handleChangeEmail = (e) => {
         e.preventDefault()
         changeEmail(data.newEmail)
+        logout()
+        props.history.push("/login");
+        window.location.reload()
+        // display.email = data.newEmail
+        // getCurrentUser().email = data.newEmail
     }
 
     const handleChangePassword = (e) => {
         // e.preventDefault()
         changePassword(data.currentPassword, data.newPassword, data.newPasswordAgain)
+        logout()
+        props.history.push("/login");
+        window.location.reload()
+    }
+
+    const handleChangeAboutMe = (e) => {
+        changeAboutMe(data.newAbout)
+        logout()
+        props.history.push("/login");
+        window.location.reload()
     }
     
 
@@ -114,7 +119,7 @@ const Profile = (props) => {
             <p>
                 <strong> Current Username: </strong> {display.username} 
             </p>
-            <Form id="username" onSubmit={(e) => {
+            <Form onSubmit={(e) => {
                 handleChangeUsername(e)
                 handleDisplayChange(e)}} ref={form}>
                 <FormGroup text=''>
@@ -203,14 +208,20 @@ const Profile = (props) => {
             <p>
                 <strong> Current About Me: </strong> {currentUser.about} 
             </p>
-            <form className="form" role="form">
-                <div className="form-group mx-sm-3 mb-2 myForm">
-                    <label for="inputAbout" className="sr-only">About</label>
-                    <input type="text" className="form-control" id="inputAbout" placeholder="About"></input>
-                </div>
-                <button type="submit" className="btn btn-primary mb-2">Submit</button>
-            </form>
-            
+            <Form onSubmit={(e) => {handleChangeAboutMe(e)}} ref={form}>
+                <FormGroup text=''>
+                    <Input
+                    type="text"
+                    className="form-control"
+                    name="newAbout"
+                    value={data.newAbout}
+                    onChange={handleChange}
+                    validations={[required]}
+                    placeholder="New About"
+                    />
+                </FormGroup>
+                <CheckButton className="btn btn-primary" ref={checkBtn}>Submit</CheckButton>
+            </Form>
             <hr></hr>
             <h2 className="text-danger">
                 Delete account
