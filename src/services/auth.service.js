@@ -22,6 +22,7 @@ export const login = (username, password) => {
         password
     })
     .then((response) => {
+        console.log(response)
         //if user has accessToken, set it to local storage 
         if(response.data.accessToken){
             //call our setItem funciton and pass in 'user' and response.data
