@@ -17,7 +17,7 @@ const Profile = () => {
             </header>
 
             <div>
-                <strong>About:</strong> {currentUser.about}
+                <strong>About:</strong>
             </div>
             <div>
                 <strong>Shop:</strong>

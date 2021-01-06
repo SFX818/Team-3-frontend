@@ -111,4 +111,12 @@ export const changePassword = (password, newPassword, newPasswordAgain) => {
     })
 }
 
+export const getProfile = () => {
+    let id = getCurrentUser().id
+    axios.get(API_URL + 'profile/' + id)
+    .then(res=>{
+        console.log("getProfile data:", res.data)
+        return res.data
+    })
+}
 
