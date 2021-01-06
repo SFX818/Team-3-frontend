@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 const API_URL = 'http://localhost:8080/api/products/'
 
 export const getProducts = () => {
@@ -15,13 +14,22 @@ export const getProducts = () => {
     return products
 }
 
-export const sellProduct = (name, price, description, username) => {
-    return axios.post(API_URL, {
-        name,
-        price,
-        description,
-        username
-    })
+export const sellProduct = (name, price, description, username, image) => {
+    let data = new FormData()
+
+    
+    data.append('file', image)
+    data.append('name', name)
+    data.append('price', price)
+    data.append('description', description)
+    data.append('username', username)
+
+    
+    let config = {
+        headers: {'Content-type': 'multipart/form-data'}
+    }
+    console.log(data)
+    return axios.post(API_URL, data, config)
 }
 
 export const deleteProduct = (id) =>{
