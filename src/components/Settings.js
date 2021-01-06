@@ -3,10 +3,12 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import FormGroup from './common/FormGroup'
-import { getCurrentUser, deleteAccount, changeUsername, changeEmail, changePassword, logout , getProfile } from '../services/auth.service'
+import { getCurrentUser, deleteAccount, changeUsername, changeEmail, changePassword, logout } from '../services/auth.service'
+import axios from 'axios';
 
 import '../css/components/Settings.css'
 
+const API_URL = 'http://localhost:8080/api/auth/';
 
 const required = (value) => {
     if (!value) {
@@ -38,16 +40,26 @@ const vusername = (value) => {
     }
   }
 
+  const getProfile = (username) => {
+    console.log("auth.service getprofile " + username)
+    return axios.get(API_URL+ 'profile/' +username , {
+        username
+    }).then(response => {
+         console.log(response)
+    }).catch(err => {
+        console.log(err)
+    })
+}
 
 const Profile = (props) => {
     const currentUser = getCurrentUser()
     const form = useRef();
     const checkBtn = useRef();
-    const profile = getProfile(getCurrentUser().username)
-    console.log(profile)
+    
 
     const [data, setData] = useState({newUsername:"", newEmail:"",currentPassword: "", newPassword:"", newPasswordAgain:""})
-    const [display, setDisplay] = useState({username:getCurrentUser().username, email:getCurrentUser().email})    
+    const [display, setDisplay] = useState({username:getCurrentUser().username, email:getCurrentUser().email})   
+    const [profile, setProfile] = useState("") 
 
     const handleChange = (e) => {
         setData({...data, [e.target.name]:e.target.value})
@@ -62,12 +74,11 @@ const Profile = (props) => {
     useEffect(() => {
         console.log("use effect: display name " + display.username)
         console.log("use effect: display name " + display.email)
+        setProfile(getProfile(display.username))
     }, [display])
 
 
-
-
-
+    console.log(profile)
     const handleChangeUsername = (e) => {
         e.preventDefault()
         changeUsername(data.newUsername)
@@ -82,10 +93,8 @@ const Profile = (props) => {
         // e.preventDefault()
         changePassword(data.currentPassword, data.newPassword, data.newPasswordAgain)
     }
-
-
     
-    
+
     
     return (
         <div className ="container">
@@ -210,6 +219,8 @@ const Profile = (props) => {
             <Form onSubmit={(e) => {
                 deleteAccount()
                 logout()
+                props.history.push("/login");
+                window.location.reload()
             }} ref={form}>
                 <FormGroup text=''>
                     <Input

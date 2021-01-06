@@ -63,16 +63,16 @@ export const changeEmail = (email) => {
     })
 }
 
-export const getProfile = (username) => {
-    console.log("auth.service getprofile " + username)
-    axios.get(API_URL+ 'profile/' +username , {
-        username:username
-    }).then(response => {
-        return (response) 
-    }).catch(err => {
-        console.log(err)
-    })
-}
+// export const getProfile = (username) => {
+//     console.log("auth.service getprofile " + username)
+//     axios.get(API_URL+ 'profile/' +username , {
+//         username:username
+//     }).then(response => {
+//         return (response) 
+//     }).catch(err => {
+//         console.log(err)
+//     })
+// }
 
 export const changeUsername = (newUsername) => {
     let username = getCurrentUser().username
