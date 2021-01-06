@@ -27,3 +27,7 @@ label {
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
+
+img {
+  width: 300px;
+}

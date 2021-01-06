@@ -1,6 +1,6 @@
 //CSS import
 import { getProducts } from '../services/product.service';
-import Product from './Product'
+import HomeProduct from './HomeProduct'
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 const Home = () => {
@@ -29,7 +29,7 @@ const Home = () => {
     <h3>recent products</h3>
 
     {products.map(each => {
-      return <Product name={each.name} price={each.price} description={each.description} seller={each.userSelling} image={each.image} id={each._id}/>
+      return <HomeProduct name={each.name} price={each.price} description={each.description} seller={each.userSelling} image={each.image} id={each._id}/>
     })}
     </>
   );

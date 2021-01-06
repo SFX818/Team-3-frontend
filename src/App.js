@@ -8,6 +8,7 @@ import Login from './components/Login'
 import Signup from './components/Signup'
 import Profile from './components/Profile'
 import Product from './components/Product'
+import MyProduct from './components/MyProduct'
 import Purchase from './components/Purchase'
 import Sell from './components/Sell'
 import Settings from './components/Settings'
@@ -26,6 +27,7 @@ const App = () => {
        <Route exact path="/register" component={Signup}/>
        <Route exact path="/profile" component={Profile}/>
        <Route exact path="/product" component={Product}/>
+       <Route exact path="/myproduct" component={MyProduct}/>
        <Route exact path="/sell" component={Sell}/>
        <Route exact path="/purchase" component={Purchase}/>
        <Route exact path="/settings" component={Settings}/>
