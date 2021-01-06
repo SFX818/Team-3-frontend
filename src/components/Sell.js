@@ -24,7 +24,7 @@ const Sell = (props) => {
   const checkBtn = useRef();
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
-  const [data, setData] = useState({name:"", price: 0, description: "", currentUser: "", image: ""})
+  const [data, setData] = useState({name:"", price: 0, description: "", currentUser: "", image: {}})
 
   data.currentUser = getCurrentUser().username
   
