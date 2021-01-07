@@ -33,7 +33,7 @@ const Layout = (props) => {
           <div>
             <ul id="dropdown1" className="dropdown-content">
               <li><a href="/profile">Profile</a></li>
-              <li><a href="/product">Products</a></li>
+              <li><a href="/myproducts">Products</a></li>
               <li><a href="/sell">Sell</a></li>
               <li><a href="/settings">Settings</a></li>
               <li className="divider"></li>

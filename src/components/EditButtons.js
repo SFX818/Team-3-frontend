@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { editProduct, deleteProduct } from '../services/product.service';
 
 
-const Product = (props) => {
+const EditButtons = (props) => {
     const handleDelete = (e) =>{
         e.preventDefault()
         deleteProduct(props.id)
@@ -26,18 +26,13 @@ const Product = (props) => {
     
     return (
         <div className ="container">
-            <img src={props.image}/>
-            <div>Name of Product: {props.name}</div>
-            <div className="description">Description: {props.description}</div>
-            <div>Price: {props.price}</div>
-            <div>User Selling: {props.seller}</div>
-            {/* <form class="delete-form">
+            <form class="delete-form">
                 <button type="button" onClick={handleDelete} className='btn btn-danger'>Delete</button>
                 <button type="button" className="btn btn-link"><Link to={{pathname: '/edit', state: {name: props.name, description: props.description, price: props.price, id: props.id}}}>Edit</Link></button>
-            </form> */}
+            </form>
         </div>
     )
 }
 
 
-export default Product
+export default EditButtons

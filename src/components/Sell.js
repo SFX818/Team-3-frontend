@@ -46,7 +46,7 @@ const Sell = (props) => {
     if(checkBtn.current.context._errors.length === 0){
         sellProduct(data.name, data.price, data.description, data.currentUser, data.image).then(
             () => {
-              props.history.push("/products");
+              props.history.push("/myproducts");
               window.location.reload()
             },
             (error) => {
