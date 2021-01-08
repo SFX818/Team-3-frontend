@@ -27,12 +27,13 @@ const EditButtons = (props) => {
     return (
         <div className ="container">
             <form class="delete-form">
-                <button type="button" onClick={handleDelete} className='btn btn-danger'>Delete</button>
-                <button type="button" className="btn btn-link"><Link to={{pathname: '/edit', state: {name: props.name, description: props.description, price: props.price, id: props.id}}}>Edit</Link></button>
+                <a className="waves-effect waves-light btn-small"><Link to={{pathname: '/edit', state: {name: props.name, description: props.description, price: props.price, id: props.id}}}>Edit</Link></a>
+                <a className="waves-effect waves-light btn-small" onClick={handleDelete}>Delete</a>
+                {/* <button type="button" onClick={handleDelete} className='btn btn-danger'>Delete</button>
+                <button type="button" className="btn btn-link"><Link to={{pathname: '/edit', state: {name: props.name, description: props.description, price: props.price, id: props.id}}}>Edit</Link></button> */}
             </form>
         </div>
     )
 }
-
 
 export default EditButtons

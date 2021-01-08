@@ -15,7 +15,11 @@ const Home = () => {
 
   return (
     <>
-    <h2>boutique online shopping made simple.</h2>
+    <header className="profile-head"> 
+            <h2> 
+                <strong>boutique online shopping made simple.</strong>
+            </h2>
+            </header>
 
     <img src="https://blog.campussonar.com/hubfs/CampusSonar_April2018/Images/footer-bg-waves.png" className="img-divider" height="30" />
 
@@ -27,7 +31,7 @@ const Home = () => {
       </div>
     </form> */}
 
-    <h3>shop recently posted products</h3>
+    <h3><strong>shop recently posted products</strong></h3>
     <div className="row">
       {products.map(each => {
         return <Product name={each.name} price={each.price} description={each.description} seller={each.userSelling} image={each.image} id={each._id}/>

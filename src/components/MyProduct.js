@@ -42,6 +42,15 @@ const MyProduct = (props) => {
     }
     
     return (
+        <>
+
+            <header className="profile-head"> 
+            <h3> 
+                <strong>my products</strong>
+            </h3>
+            </header>
+
+
         <div className="row">
             {products.map(each => {
                 if( each.userSelling === currentUser.username) {
@@ -72,6 +81,7 @@ const MyProduct = (props) => {
                 }
             })}
         </div>
+        </>
     )
 }
 

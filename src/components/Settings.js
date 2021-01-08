@@ -102,12 +102,20 @@ const Profile = (props) => {
 
     
     return (
+        <>
+
+        <header className="profile-head"> 
+            <h3> 
+                <strong>{currentUser.username}'s settings</strong>
+            </h3>
+        </header>
+
         <div className ="container">
-            <header className="jumbotron"> 
+            {/* <header className="jumbotron"> 
                 <h3> 
                     <strong> {display.username}'s Settings </strong>
                 </h3>
-            </header>
+            </header> */}
             
             {/* {currentUser.roles &&
                 currentUser.roles.map((role, index)=> <li key={index}> {role} </li>)
@@ -244,6 +252,7 @@ const Profile = (props) => {
                 <CheckButton className="btn btn-danger" ref={checkBtn}>Delete Account</CheckButton>
             </Form>
         </div>
+        </>
     )
 }
 export default Profile

@@ -61,13 +61,20 @@ const Sell = (props) => {
     }
   };
   return (
+    <>
+    <header className="profile-head"> 
+            <h3> 
+                <strong>sell a product</strong>
+            </h3>
+            </header>
+
     <div className="col-md-12">
       <div className="card card-container">
-        <img
+        {/* <img
           src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
           alt="profile-img"
           className="profile-img-card"
-        />
+        /> */}
         <Form onSubmit={createProduct} ref={form}>
           <FormGroup text='name'>
             <Input
@@ -129,6 +136,7 @@ const Sell = (props) => {
         </Form>
       </div>
     </div>
+    </>
   );
 };
 export default Sell;
