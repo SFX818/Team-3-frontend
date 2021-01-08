@@ -25,9 +25,7 @@ const Product = (props) => {
     }
     
     return (
-
         // card action reveal
-
         <div className="card sticky-action">
             <div className="card-image waves-effect waves-block waves-light">
                 <img className="activator" src={props.image} />
@@ -79,10 +77,7 @@ const Product = (props) => {
         //         <button type="button" className="btn btn-link"><Link to={{pathname: '/edit', state: {name: props.name, description: props.description, price: props.price, id: props.id}}}>Edit</Link></button>
         //     </form> 
         // </div>
-
-
     )
 }
-
 
 export default Product

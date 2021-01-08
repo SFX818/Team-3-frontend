@@ -42,20 +42,37 @@ const MyProduct = (props) => {
     }
     
     return (
+        <div className="row">
+            {products.map(each => {
+                if( each.userSelling === currentUser.username) {
+                    // console.log("console logging each product:", each)
+                    return <div className="card sticky-action">
+                            <div className="card-image waves-effect waves-block waves-light">
+                                <img className="activator" src={each.image} />
+                            </div>
+                            <div className="card-content">
+                                <span className="card-title activator grey-text text-darken-4">{each.name}
+                                {/* <i className="material-icons right">more_vert</i> */}
+                                </span>
+                            </div>
+                            <div className="card-action">
+                                <EditButtons name={each.name} price={each.price} description={each.description} id={each._id} />
+                            </div>
+                            <div className="card-reveal">
+                                <span className="card-title grey-text text-darken-4">{each.name}
+                                <i className="material-icons right">close</i>
+                                </span>
+                                <span>{each.description}</span>
+                            </div>
+                        </div>
 
-        <>
-        {products.map(each => {
-            if( each.userSelling === currentUser.username) {
-                // console.log("console logging each product:", each)
-                return <div> <Product name={each.name} price={each.price} description={each.description} seller={each.userSelling} image={each.image} id={each._id}/> 
+                        {/* <Product name={each.name} price={each.price} description={each.description} seller={each.userSelling} image={each.image} id={each._id}/> 
 
-                <EditButtons name={each.name} price={each.price} description={each.description} id={each._id} /> </div>
-            }
-        })}
-
-        </>
+                    <EditButtons name={each.name} price={each.price} description={each.description} id={each._id} />  */}
+                }
+            })}
+        </div>
     )
 }
-
 
 export default MyProduct
