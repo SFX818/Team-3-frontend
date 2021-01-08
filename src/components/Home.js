@@ -28,10 +28,12 @@ const Home = () => {
     </form> */}
 
     <h3>shop recently posted products</h3>
+    <div className="row">
+      {products.map(each => {
+        return <Product name={each.name} price={each.price} description={each.description} seller={each.userSelling} image={each.image} id={each._id}/>
+      })}
+    </div>
 
-    {products.map(each => {
-      return <Product name={each.name} price={each.price} description={each.description} seller={each.userSelling} image={each.image} id={each._id}/>
-    })}
     </>
   );
 };

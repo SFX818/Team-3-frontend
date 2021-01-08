@@ -8,7 +8,7 @@ label {
 }
 .card {
   background-color: #f7f7f7;
-  padding: 20px 25px 30px;
+  padding: 20px 20px 0px;
   margin: 0 auto 25px;
   margin-top: 50px;
   -moz-border-radius: 2px;
@@ -17,6 +17,7 @@ label {
   -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  width: 30%;
 }
 .profile-img-card {
   width: 96px;
@@ -35,4 +36,9 @@ img {
 .img-divider {
   width: 100%;
   margin: 20px 0 20px 0;
+}
+
+.card-image {
+  height: 50%;
+  margin: 0 auto;
 }
