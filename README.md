@@ -1,10 +1,19 @@
 # Blue Barracuda Boutique (Frontend)
---------------
-Screenshot of Landing Page (TBD)
+---
 
-Link to Deployed Frontend App (TBD)
+## Landing Page
+
+<img width="625" alt="landing-page" src="https://i.imgur.com/HeAiVpn.png">
+
+---
+
+## Links 
+
+Deloyed Frontend App (TBD)
 
 [Backend Repo](https://github.com/SFX818/Team-3-backend)
+
+---
 
 ## Wireframes
 #### Home Page:
@@ -25,7 +34,7 @@ Link to Deployed Frontend App (TBD)
 #### Login Page
 <img width="526" alt="Screen Shot 2020-12-28 at 1 02 20 AM" src="https://user-images.githubusercontent.com/60105611/103192908-7768e200-48a8-11eb-95bb-eff08c0209ca.png">
 
-----------------------------------------
+---
 
 ## User Stories
 * As a user, I want to sell my products.
@@ -34,23 +43,53 @@ Link to Deployed Frontend App (TBD)
 * As a user, I want to delete a product.
 * As a user, I want to be able to find products.
 * As a user, I want to be able to purchase products.
-* As a user, I want to be able to purchase by credit card.
-* As a user, I want to be able to direct message a seller. (stretch goal)
 * As a user, I want to have a page of products I am selling.
-* As a user, I want to have a page of purchase history.
-* As a user, I want to be able to review and rate sellers.
-* As a user, I want to edit the reviews on sellers.
+
+---
 
 ## Technology Used
 * Axios
 * Bootstrap
-* Materialize
+* Cloudinary
+* Dotenv
+* Express
+* Materialize-CSS
+* Method
+* Method-Override
+* Multer
+* Override
 * React
 * Validator
 * Web Vitals
 
-## General Approach (TBD)
+---
 
-## Installation Instructions (TBD)
+## General Approach
 
-## Unsolved Problems/Major Hurdles (TBD)
+Blue Barracudas Boutique was created with a a simple online store in mind for users to sell and buy products.
+
+* Brainstormed user stories, wireframes, and routes to have an idea of how the app will be built.
+* Created RESTful routes in the backend.
+* Created components and connected them to the database models.
+* Displayed user and product data from backend onto frontend.
+* Styled using Materialize.
+
+---
+
+## Setup
+
+* fork and clone repo
+* `npm i`
+
+---
+
+## Challenges & Stretch Goals
+
+#### Challenges
+* Spent time to configure and implement Cloudinary.
+
+#### Stretch Goals
+
+* Allow users to purchase by credit card.
+* Function to direct message a seller through the website.
+* Write and rate sellers after purchasing products. 
