@@ -7,9 +7,8 @@
 ---
 
 ## Links 
-Deloyed Frontend App (TBD)
-
-[Backend Repo](https://github.com/SFX818/Team-3-backend)
+* Deloyed Frontend App (TBD)
+* [Backend Repo](https://github.com/SFX818/Team-3-backend)
 
 ---
 
@@ -46,19 +45,19 @@ Deloyed Frontend App (TBD)
 ---
 
 ## Technology Used
-* Axios
-* Bootstrap
-* Cloudinary
-* Dotenv
-* Express
-* Materialize-CSS
-* Method
-* Method-Override
-* Multer
-* Override
-* React
-* Validator
-* Web Vitals
+* axios
+* bootstrap
+* cloudinary
+* dotenv
+* express
+* materialize-css
+* method
+* method-override
+* multer
+* override
+* react
+* validator
+* web-vitals
 
 ---
 
@@ -82,7 +81,8 @@ Blue Barracudas Boutique was created with a a simple online store in mind for us
 ## Challenges & Stretch Goals
 
 #### Challenges
-* Spent time to configure and implement Cloudinary.
+* Ran into issues with implementing Cloudinary.
+* Minor challenges with getting user data from backend that was not in local storage.
 
 #### Stretch Goals
 
