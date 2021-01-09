@@ -14,6 +14,7 @@ import Sell from './components/Sell'
 import Settings from './components/Settings'
 import Edit from './components/Edit'
 import Review from './components/Review'
+import About from './components/About'
 
 
 // CSS imports
@@ -34,6 +35,7 @@ const App = () => {
        <Route exact path="/settings" component={Settings}/>
        <Route exact path="/edit" component={Edit}/>
        <Route exact path="/review" component={Review}/>
+       <Route exact path="/about" component={About}/>
      </Switch>
     </Layout>
   );
