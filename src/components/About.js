@@ -16,7 +16,7 @@ const About = () => {
                
                 <div className="row col s12">
 
-                    <div className="col s4 card medium blue-grey darken-1">
+                    <div className="col s4 card medium blue-grey darken-1 about-card">
                         <div className="card-content white-text">
                         <span className="card-title">Amal Amchtal</span>
                         <p>About</p>
@@ -26,7 +26,7 @@ const About = () => {
                         </div>
                     </div>
 
-                    <div className="col s4 card medium blue-grey darken-1">
+                    <div className="col s4 card medium blue-grey darken-1 about-card">
                         <div className="card-content white-text">
                         <span className="card-title">Edward Pizarro</span>
                         <p>About</p>
@@ -36,7 +36,7 @@ const About = () => {
                         </div>
                     </div>
 
-                <div className="col s4 card medium blue-grey darken-1">
+                <div className="col s4 card medium blue-grey darken-1 about-card">
                     <div className="card-content white-text">
                     <span className="card-title">Justin Nykiel</span>
                     <p>About</p>
@@ -46,7 +46,7 @@ const About = () => {
                     </div>
                 </div>
 
-                <div className="col s4 card medium blue-grey darken-1">
+                <div className="col s4 card medium blue-grey darken-1 about-card">
                     <div className="card-content white-text">
                     <span className="card-title">Salima Harun</span>
                     <p>About</p>
