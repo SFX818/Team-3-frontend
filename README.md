@@ -1,14 +1,12 @@
-# Blue Barracuda Boutique (Frontend)
+# Blue Barracudas Boutique (Frontend)
 ---
 
 ## Landing Page
-
 <img width="625" alt="landing-page" src="https://i.imgur.com/HeAiVpn.png">
 
 ---
 
 ## Links 
-
 Deloyed Frontend App (TBD)
 
 [Backend Repo](https://github.com/SFX818/Team-3-backend)
@@ -65,7 +63,6 @@ Deloyed Frontend App (TBD)
 ---
 
 ## General Approach
-
 Blue Barracudas Boutique was created with a a simple online store in mind for users to sell and buy products.
 
 * Brainstormed user stories, wireframes, and routes to have an idea of how the app will be built.
@@ -77,7 +74,6 @@ Blue Barracudas Boutique was created with a a simple online store in mind for us
 ---
 
 ## Setup
-
 * fork and clone repo
 * `npm i`
 
