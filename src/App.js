@@ -15,6 +15,7 @@ import Settings from './components/Settings'
 import Edit from './components/Edit'
 import Review from './components/Review'
 import About from './components/About'
+import Results from './components/Results'
 
 
 // CSS imports
@@ -31,11 +32,11 @@ const App = () => {
        <Route exact path="/product" component={Product}/>
        <Route exact path="/myproducts" component={MyProduct}/>
        <Route exact path="/sell" component={Sell}/>
-       {/* <Route exact path="/purchase" component={Purchase}/> */}
        <Route exact path="/settings" component={Settings}/>
        <Route exact path="/edit" component={Edit}/>
        <Route exact path="/review" component={Review}/>
        <Route exact path="/about" component={About}/>
+       <Route exact path="/results" component={Results}/>
      </Switch>
     </Layout>
   );
