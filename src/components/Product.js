@@ -28,7 +28,7 @@ const Product = (props) => {
         // card action reveal
         <div className="card sticky-action">
             <div className="card-image waves-effect waves-block waves-light">
-                <img className="activator" src={props.image} />
+                <img className="activator product-image" src={props.image} />
             </div>
             <div className="card-content">
                 <span className="card-title activator grey-text text-darken-4">{props.name}
@@ -36,7 +36,7 @@ const Product = (props) => {
                 </span>
             </div>
             <div className="card-action">
-                <a href="#">Buy Now</a>
+                <span className="buy-now">Buy Now</span>
                 <div>Sold By: {props.seller}</div>
             </div>
             <div className="card-reveal">

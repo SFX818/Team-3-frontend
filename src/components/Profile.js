@@ -1,5 +1,6 @@
 import { getProducts } from '../services/product.service';
 import Product from './Product'
+import EditButtons from './EditButtons'
 import Review from './Review'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
@@ -43,7 +44,7 @@ const Profile = () => {
 
             <div className="profile-container">
                 <div className="profile-title">
-                    <strong>About</strong>
+                    <h4>About</h4>
                 </div>
                 <div className="profile-text">
                     {currentUser.about}
@@ -52,7 +53,7 @@ const Profile = () => {
 
             <div className="profile-container">
                 <div className="profile-contact">
-                    <strong>Contact</strong>
+                    <h4>Contact</h4>
                 </div>
                 <div className="profile-text">
                     {currentUser.email}
@@ -61,17 +62,41 @@ const Profile = () => {
 
             <div className="profile-container">
                 <div className="profile-title">
-                    <strong>Shop</strong>
+                    <h4>Shop</h4>
                 </div>
             </div>
             <div className="row">
             {products.map(each => {
                 if( each.userSelling === currentUser.username) {
                     // console.log("console logging each product:", each)
-                    return 
+                    return <div className="card">
+                            <div className="card-image">
+                                <img src={each.image} />
+                            </div>
+                            <div className="card-content">
+                                <span className="card-title grey-text text-darken-4">{each.name}
+                                {/* <i className="material-icons right">more_vert</i> */}
+                                </span>
+                            </div>
+
+                            <div className="card-action">
+                                {each.description}
+                            </div>
+
+                            {/* <div className="card-reveal">
+                                <span className="card-title grey-text text-darken-4">{each.name}
+                                <i className="material-icons right">close</i>
+                                </span>
+                                <span>{each.description}</span>
+                            </div> */}
+                        </div>
+
+                        {/* <Product name={each.name} price={each.price} description={each.description} seller={each.userSelling} image={each.image} id={each._id}/> 
+
+                    <EditButtons name={each.name} price={each.price} description={each.description} id={each._id} />  */}
                 }
             })}
-            </div>
+        </div>
 
             
             {/* <div>

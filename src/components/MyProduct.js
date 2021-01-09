@@ -57,7 +57,7 @@ const MyProduct = (props) => {
                     // console.log("console logging each product:", each)
                     return <div className="card sticky-action">
                             <div className="card-image waves-effect waves-block waves-light">
-                                <img className="activator" src={each.image} />
+                                <img className="activator product-image" src={each.image} />
                             </div>
                             <div className="card-content">
                                 <span className="card-title activator grey-text text-darken-4">{each.name}

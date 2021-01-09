@@ -62,7 +62,7 @@
 ---
 
 ## General Approach
-Blue Barracudas Boutique was created with a a simple online store in mind for users to sell and buy products.
+Blue Barracudas Boutique was created with a simple online store in mind for users to sell and buy products.
 
 * Brainstormed user stories, wireframes, and routes to have an idea of how the app will be built.
 * Created RESTful routes in the backend.

@@ -171,7 +171,7 @@ const Profile = (props) => {
                 Change Password
             </h2>
             <p>
-                <strong>It's a good idea to use a strong password that you're not using elsewhere</strong>
+                <strong>It's a suggested to use a strong password that you are not using elsewhere.</strong>
             </p>
             <Form onSubmit={(e) => {handleChangePassword(e)}} ref={form}>
                 <FormGroup text=''>
@@ -232,9 +232,9 @@ const Profile = (props) => {
             </Form>
             <hr></hr>
             <h2 className="text-danger">
-                Delete account
+                Delete Account
             </h2>
-            <p>Once you delete your account, there is no going back. Please be certain.</p>
+            <p>Once you delete your account, you will not be able to recover your account or history. Please be sure before pressing the button below.</p>
             <Form onSubmit={(e) => {
                 deleteAccount()
                 logout()
