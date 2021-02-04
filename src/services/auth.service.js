@@ -3,8 +3,7 @@ import axios from 'axios';
 import { setItem, getItem, removeItem } from '../utilities/localStorage.utilities';
 
 //note: added the / at the end of this url so it doesnt need to be included before signup in axios
-const API_URL = 'http://localhost:8080/api/auth/';
-
+const API_URL = process.env.NODE_ENV === 'development' ? process.env.REACT_APP_DEV_URL_AUTH : process.env.REACT_APP_PRO_URL_AUTH;
 //function to register user
 export const register = (username, email, password) => {
     return axios

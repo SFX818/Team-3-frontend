@@ -2,11 +2,11 @@ import axios from 'axios';
 import { getCurrentUser } from './auth.service';
 
 const API_URL = 'http://localhost:8080/api/products/'
-
+const API_URL = process.env.NODE_ENV === 'development' ? process.env.REACT_APP_DEV_URL_AUTH : process.env.REACT_APP_PRO_URL_AUTH;
 export const getProducts = () => {
     let products = []
     axios
-        .get(API_URL)
+        .get(API_URL+'/api/products')
         .then((response) => {
             response.data.forEach((product)=>{
                 products.push(product)
@@ -17,8 +17,6 @@ export const getProducts = () => {
 
 export const sellProduct = (name, price, description, username, image) => {
     let data = new FormData()
-
-    
     data.append('file', image)
     data.append('name', name)
     data.append('price', price)
@@ -29,19 +27,16 @@ export const sellProduct = (name, price, description, username, image) => {
     let config = {
         headers: {'Content-type': 'multipart/form-data'}
     }
-    console.log(data)
-    return axios.post(API_URL, data, config)
+    return axios.post(API_URL+'/api/products', data, config)
 }
 
 export const deleteProduct = (id) =>{
-    console.log(id)
-    return axios.delete(API_URL + id, {
+    return axios.delete(API_URL+'/api/products/' + id, {
         id
     })
 }
 export const editProduct = (id, name, price, description) =>{
-    console.log(id)
-    return axios.put(API_URL + id, {
+    return axios.put(API_URL+'/api/products/' + id, {
         id,
         name,
         description,
